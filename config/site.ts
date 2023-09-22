@@ -12,11 +12,23 @@ export const siteConfig = {
       label: "Sobre",
       href: "/about",
     },
+    {
+      label: "Criar Publicação",
+      href: "/create",
+    },
   ],
   navMenuItems: [
     {
-      label: "Perfil",
-      href: "/profile",
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Sobre",
+      href: "/about",
+    },
+    {
+      label: "Criar Publicação",
+      href: "/create",
     },
     {
       label: "Configurações",

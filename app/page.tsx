@@ -1,3 +1,4 @@
+import PostCard from "@/components/Posts/PostCard";
 import { title, subtitle } from "@/components/primitives";
 
 export default function Home() {
@@ -11,6 +12,14 @@ export default function Home() {
         <h2 className={subtitle({ class: "mt-4" })}>
           Criado para fins educacionais.
         </h2>
+      </div>
+      <div className="gap-4 pt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
       </div>
     </section>
   );

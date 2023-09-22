@@ -119,13 +119,13 @@ export const Navbar = () => {
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
-                  index === 2
+                  index === 4
                     ? "danger"
-                    : index === siteConfig.navMenuItems.length
-                    ? "danger"
+                    : index === siteConfig.navMenuItems.length - 3
+                    ? "primary"
                     : "foreground"
                 }
-                href="#"
+                href={item.href}
                 size="lg"
               >
                 {item.label}
