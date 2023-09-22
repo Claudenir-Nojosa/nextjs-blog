@@ -1,9 +1,9 @@
-import { title } from "@/components/primitives";
+import FormPost from "@/components/Form/FormPost";
 
 export default function CreatePage() {
 	return (
 		<div>
-			<h1 className={title()}>Criar Publicação</h1>
+      <FormPost />
 		</div>
 	);
 }
