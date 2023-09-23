@@ -12,6 +12,7 @@ import {
 import { title } from "../Shared/primitives";
 import { Tag } from "@prisma/client";
 import { FC } from "react";
+import ButtonAction from "../Shared/ButtonAction";
 
 interface PostCardProps {
   post: {
@@ -20,10 +21,11 @@ interface PostCardProps {
     content: string;
     Tag: Tag;
   };
+  isEditing: boolean;
 }
 
-const PostCard: FC<PostCardProps> = ({ post }) => {
-  const { title: CardTitle, content, Tag } = post;
+const PostCard: FC<PostCardProps> = ({ post, isEditing }) => {
+  const { id, title: CardTitle, content, Tag } = post;
   return (
     <Card className="max-w-[400px]">
       <CardHeader className="flex gap-3">
@@ -44,11 +46,20 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
         <p>{content}</p>
       </CardBody>
       <Divider />
-      <CardFooter>
-        <Link href="/blog/1" className={title({ color: "yellow", size: "sm" })}>
-          Saiba mais...
-        </Link>
-      </CardFooter>
+      {isEditing ? (
+        <CardFooter className="flex justify-end">
+          <ButtonAction />
+        </CardFooter>
+      ) : (
+        <CardFooter>
+          <Link
+            href={`/blog/${id}`}
+            className={title({ color: "yellow", size: "sm" })}
+          >
+            Saiba mais...
+          </Link>
+        </CardFooter>
+      )}
     </Card>
   );
 };
