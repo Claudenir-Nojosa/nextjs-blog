@@ -1,9 +1,11 @@
-import { title } from "@/components/primitives";
+import BackButton from "@/components/Shared/BackButton";
+import { title } from "@/components/Shared/primitives";
 
 export default function AboutPage() {
-	return (
-		<div>
-			<h1 className={title()}>Sobre</h1>
-		</div>
-	);
+  return (
+    <div>
+      <BackButton goToRootPage={false}  />
+      <h1 className={title({ color: "yellow" })}>Sobre</h1>
+    </div>
+  );
 }

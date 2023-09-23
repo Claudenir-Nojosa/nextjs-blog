@@ -10,7 +10,7 @@ import {
   Image,
   Button,
 } from "@nextui-org/react";
-import { title } from "../primitives";
+import { title } from "../Shared/primitives";
 
 export default function PostCard() {
   return (

@@ -10,20 +10,20 @@ import {
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-import { title } from "@/components/primitives";
+import { title } from "@/components/Shared/primitives";
 import { link as linkStyles } from "@nextui-org/theme";
 
 import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
 
-import { ThemeSwitch } from "@/components/theme-switch";
+import { ThemeSwitch } from "@/components/Shared/theme-switch";
 import {
   TwitterIcon,
   GithubIcon,
   SearchIcon,
   LinkedinIcon,
-} from "@/components/icons";
+} from "@/components/Shared/icons";
 import Image from "next/image";
 
 export const Navbar = () => {

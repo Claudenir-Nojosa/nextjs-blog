@@ -1,5 +1,5 @@
 import PostCard from "@/components/Posts/PostCard";
-import { title, subtitle } from "@/components/primitives";
+import { title, subtitle } from "@/components/Shared/primitives";
 
 export default function Home() {
   return (

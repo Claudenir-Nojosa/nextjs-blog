@@ -22,7 +22,7 @@ interface FormPostProps {
   isEditing: boolean;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
+const EditFormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
   const { register, handleSubmit } = useForm<FormInputPost>();
 
   return (
@@ -75,4 +75,4 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
   );
 };
 
-export default FormPost;
+export default EditFormPost;
