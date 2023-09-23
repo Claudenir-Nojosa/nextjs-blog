@@ -44,16 +44,4 @@ export const siteConfig = {
     twitter: "https://twitter.com/nojosaf",
     linkedin: "https://www.linkedin.com/in/claudenir-nojosa/",
   },
-  selectTypes: [
-    {
-      label: "React",
-      value: "react",
-      description: "React Description",
-    },
-    {
-      label: "Next.js",
-      value: "next.js",
-      description: "Next.js Description",
-    },
-  ],
 };

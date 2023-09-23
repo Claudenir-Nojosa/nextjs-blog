@@ -12,12 +12,12 @@ import { Textarea } from "@nextui-org/react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import { title } from "@/components/Shared/primitives";
-import { siteConfig } from "@/config/site";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormInputPost } from "@/types";
 import { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { Tag } from "@prisma/client";
 
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
@@ -28,14 +28,14 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
   const { register, handleSubmit } = useForm<FormInputPost>();
 
   // fetch list tags
-  const { data: dataTags, isLoading: isLoadingTags } = useQuery({
+  const { data: dataTags, isLoading: isLoadingTags } = useQuery<Tag[]>({
     queryKey: ["tags"],
     queryFn: async () => {
       const response = await axios.get("/api/tags");
       return response.data;
     },
   });
-  console.log(dataTags)
+  console.log(dataTags);
 
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -61,18 +61,24 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
             className="max-w-xs"
             {...register("content")}
           />
-          <Select
-            label="Categoria"
-            placeholder="Selecione uma categoria"
-            className="max-w-xs"
-            {...register("tag")}
-          >
-            {siteConfig.selectTypes.map((animal) => (
-              <SelectItem key={animal.value} value={animal.value}>
-                {animal.label}
-              </SelectItem>
-            ))}
-          </Select>
+          {isLoadingTags ? (
+            <div className="justify-center flex items-center text-center">
+              <span className="loading loading-infinity loading-md "></span>
+            </div>
+          ) : (
+            <Select
+              label="Categoria"
+              placeholder="Selecione uma categoria"
+              className="max-w-xs"
+              {...register("tag")}
+            >
+              {dataTags?.map((item) => (
+                <SelectItem key={item.id} value={item.id}>
+                  {item.name}
+                </SelectItem>
+              ))}
+            </Select>
+          )}
         </CardBody>
         <CardFooter>
           <Button

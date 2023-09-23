@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.6.3",
+    "daisyui": "^3.7.7",
     "prisma": "^5.3.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
