@@ -15,6 +15,7 @@ import { FC } from "react";
 import ButtonAction from "../Shared/ButtonAction";
 
 interface PostCardProps {
+  id: string;
   post: {
     id: string;
     title: string;
@@ -43,12 +44,12 @@ const PostCard: FC<PostCardProps> = ({ post, isEditing }) => {
       </CardHeader>
       <Divider />
       <CardBody>
-        <p>{content}</p>
+        <p>{content.slice(0, 30)}</p>
       </CardBody>
       <Divider />
       {isEditing ? (
         <CardFooter className="flex justify-end">
-          <ButtonAction />
+          <ButtonAction id={id} />
         </CardFooter>
       ) : (
         <CardFooter>

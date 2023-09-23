@@ -22,10 +22,19 @@ import { Tag } from "@prisma/client";
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
   isEditing: boolean;
+  initialValue?: FormInputPost;
+  isLoadingSubmit: boolean;
 }
 
-const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
-  const { register, handleSubmit } = useForm<FormInputPost>();
+const FormPost: FC<FormPostProps> = ({
+  submit,
+  isEditing,
+  initialValue,
+  isLoadingSubmit,
+}) => {
+  const { register, handleSubmit } = useForm<FormInputPost>({
+    defaultValues: initialValue,
+  });
 
   // fetch list tags
   const { data: dataTags, isLoading: isLoadingTags } = useQuery<Tag[]>({
@@ -85,7 +94,13 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
             type="submit"
             className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg w-full"
           >
-            {isEditing ? "Alterar" : "Criar"}
+            {isEditing
+              ? isLoadingSubmit
+                ? "Alterando"
+                : "Alterar"
+              : isLoadingSubmit
+              ? "Criando"
+              : "Criar"}
           </Button>
         </CardFooter>
       </Card>

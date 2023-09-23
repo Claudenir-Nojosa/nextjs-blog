@@ -23,7 +23,6 @@ async function getPosts() {
 }
 
 export default async function Home() {
-
   const posts = await getPosts();
 
   return (
@@ -39,7 +38,7 @@ export default async function Home() {
       </div>
       <div className="gap-4 pt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         {posts.map((post: any) => (
-          <PostCard key={post.id} post={post} isEditing={false} />
+          <PostCard key={post.id} post={post} isEditing={false} id={post.id} />
         ))}
       </div>
     </section>

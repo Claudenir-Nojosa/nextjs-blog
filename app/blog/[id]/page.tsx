@@ -20,6 +20,7 @@ async function getPost(id: string) {
       content: true,
       Tag: true,
     },
+    
   });
   return response;
 }
@@ -27,12 +28,12 @@ async function getPost(id: string) {
 const BlogDetailPage: FC<BlogDetailPageProps> = async ({ params }) => {
   const post = await getPost(params.id);
 
-  console.log(post)
+  console.log(post);
 
   return (
     <>
       <BackButton goToRootPage={false} />
-      <PostCard isEditing={true} post={post}/>
+      <PostCard isEditing={true} post={post} id={params.id} />
     </>
   );
 };

@@ -14,7 +14,7 @@ export default function CreatePage() {
     createPost(data);
   };
 
-  const { mutate: createPost, isLoading } = useMutation({
+  const { mutate: createPost, isLoading: isLoadingSubmit } = useMutation({
     mutationFn: (newPost: FormInputPost) => {
       return axios.post("/api/posts/create", newPost);
     },
@@ -23,13 +23,18 @@ export default function CreatePage() {
     },
     onSuccess: () => {
       router.push("/");
+      router.refresh();
     },
   });
 
   return (
     <div>
       <BackButton goToRootPage={true} />
-      <FormPost submit={handleCreatePost} isEditing={false} />
+      <FormPost
+        submit={handleCreatePost}
+        isEditing={false}
+        isLoadingSubmit={isLoadingSubmit}
+      />
     </div>
   );
 }
