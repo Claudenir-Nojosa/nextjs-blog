@@ -8,7 +8,7 @@ export async function GET() {
   } catch (error) {
     return NextResponse.json(
       { message: "Could Not Fetch Tags" },
-      { status: 200 }
+      { status: 500 }
     );
   }
 }

@@ -70,7 +70,7 @@ const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
               label="Categoria"
               placeholder="Selecione uma categoria"
               className="max-w-xs"
-              {...register("tag")}
+              {...register("tagId")}
             >
               {dataTags?.map((item) => (
                 <SelectItem key={item.id} value={item.id}>
