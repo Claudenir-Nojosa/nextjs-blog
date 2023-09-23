@@ -9,11 +9,11 @@ function ButtonAction() {
   return (
     <div className="flex gap-4 items-center">
       <Link href="/edit/1">
-        <Button isIconOnly variant="faded" aria-label="Edit">
+        <Button isIconOnly variant="bordered" aria-label="Edit">
           <EditIcon />
         </Button>
       </Link>
-      <Button isIconOnly color="danger" variant="faded" aria-label="Delete  ">
+      <Button isIconOnly color="danger" variant="bordered" aria-label="Delete  ">
         <DeleteIcon />
       </Button>
     </div>

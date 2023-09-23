@@ -16,6 +16,8 @@ import { siteConfig } from "@/config/site";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormInputPost } from "@/types";
 import { FC } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 interface FormPostProps {
   submit: SubmitHandler<FormInputPost>;
@@ -24,6 +26,16 @@ interface FormPostProps {
 
 const FormPost: FC<FormPostProps> = ({ submit, isEditing }) => {
   const { register, handleSubmit } = useForm<FormInputPost>();
+
+  // fetch list tags
+  const { data: dataTags, isLoading: isLoadingTags } = useQuery({
+    queryKey: ["tags"],
+    queryFn: async () => {
+      const response = await axios.get("/api/tags");
+      return response.data;
+    },
+  });
+  console.log(dataTags)
 
   return (
     <form onSubmit={handleSubmit(submit)}>
