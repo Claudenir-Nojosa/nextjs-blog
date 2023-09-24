@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -16,7 +17,7 @@ import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
-
+import { useClerk } from "@clerk/clerk-react";
 import { ThemeSwitch } from "@/components/Shared/theme-switch";
 import {
   TwitterIcon,
@@ -29,6 +30,8 @@ import Image from "next/image";
 import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
 
 export const Navbar = () => {
+  const { user } = useClerk();
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -105,14 +108,14 @@ export const Navbar = () => {
           <ThemeSwitch />
           <SignedIn>
             <SignOutButton>
-              <div className=" block md:hidden">
+              <div className=" block">
                 <LogOutIcon />
               </div>
             </SignOutButton>
           </SignedIn>
         </NavbarItem>
 
-        <div className="hidden md:flex">
+        <div className="hidden lg:flex">
           <OrganizationSwitcher
             appearance={{
               elements: {
@@ -144,7 +147,7 @@ export const Navbar = () => {
       <NavbarMenu className="mt-8">
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
-         {/*  {siteConfig.navMenuItems.map((item, index) => (
+          {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
@@ -160,14 +163,24 @@ export const Navbar = () => {
                 {item.label}
               </Link>
             </NavbarMenuItem>
-          ))} */}
-          <SignedIn>
-            <SignOutButton>
-              <div className="flex cursor-pointer ">
-                <h4 className="text-red-600 h-7">Sair</h4>
-              </div>
-            </SignOutButton>
-          </SignedIn>
+          ))}
+          <NavbarMenuItem>
+            {user ? (
+              // Usuário autenticado, exibe o botão "Sair"
+              <SignedIn>
+                <SignOutButton>
+                  <div className="flex cursor-pointer">
+                    <h4 className="text-red-600 h-7">Sair</h4>
+                  </div>
+                </SignOutButton>
+              </SignedIn>
+            ) : (
+              // Usuário não autenticado, exibe o botão "Login"
+              <Link color="foreground" href="/sign-in" size="lg">
+                Login
+              </Link>
+            )}
+          </NavbarMenuItem>
         </div>
       </NavbarMenu>
     </NextUINavbar>

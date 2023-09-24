@@ -34,10 +34,6 @@ export const siteConfig = {
       label: "Configurações",
       href: "/settings",
     },
-    {
-      label: "Login",
-      href: "/sign-in",
-    },
   ],
   links: {
     github: "https://github.com/Claudenir-Nojosa",
