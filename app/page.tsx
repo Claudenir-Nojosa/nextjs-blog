@@ -38,7 +38,13 @@ export default async function Home() {
       </div>
       <div className="gap-4 pt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         {posts.map((post: any) => (
-          <PostCard key={post.id} post={post} isEditing={false} id={post.id} />
+          <PostCard
+            key={post.id}
+            post={post}
+            isEditing={false}
+            id={post.id}
+            isReading={false}
+          />
         ))}
       </div>
     </section>

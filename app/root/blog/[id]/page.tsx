@@ -33,7 +33,7 @@ const BlogDetailPage: FC<BlogDetailPageProps> = async ({ params }) => {
   return (
     <>
       <BackButton goToRootPage={false} />
-      <PostCard isEditing={true} post={post} id={params.id} />
+      <PostCard isEditing={true} post={post} id={params.id} isReading={true} />
     </>
   );
 };

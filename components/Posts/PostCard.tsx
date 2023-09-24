@@ -23,13 +23,14 @@ interface PostCardProps {
     Tag: Tag;
   };
   isEditing: boolean;
+  isReading: boolean;
 }
 
-const PostCard: FC<PostCardProps> = ({ post, isEditing }) => {
+const PostCard: FC<PostCardProps> = ({ post, isEditing, isReading }) => {
   const { id, title: CardTitle, content, Tag } = post;
   return (
-    <Card className="max-w-[400px]">
-      <CardHeader className="flex gap-3">
+    <Card>
+      <CardHeader className="flex gap-3 min-w-[480px]">
         <Image
           alt="clawncoding logo"
           height={40}
@@ -38,13 +39,13 @@ const PostCard: FC<PostCardProps> = ({ post, isEditing }) => {
           width={40}
         />
         <div className="flex flex-col">
-          <p className="text-md">{CardTitle}</p>
-          <p className="text-small text-default-500">{Tag.name}</p>
+          <p className="text-md text-start">{CardTitle}</p>
+          <p className="text-small text-default-500 text-start">{Tag.name}</p>
         </div>
       </CardHeader>
       <Divider />
-      <CardBody>
-        <p>{content.slice(0, 30)}</p>
+      <CardBody className="w-full">
+        {isReading ? <p>{content}</p> : <p>{content.slice(0, 200)}</p>}
       </CardBody>
       <Divider />
       {isEditing ? (

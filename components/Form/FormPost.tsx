@@ -61,9 +61,11 @@ const FormPost: FC<FormPostProps> = ({
             label="Titulo"
             placeholder="Titulo do Post"
             labelPlacement="outside"
+            isRequired
             {...register("title")}
           />
           <Textarea
+            isRequired
             label="Conteúdo"
             labelPlacement="outside"
             placeholder="Conteúdo do Post"
@@ -76,6 +78,7 @@ const FormPost: FC<FormPostProps> = ({
             </div>
           ) : (
             <Select
+              isRequired
               label="Categoria"
               placeholder="Selecione uma categoria"
               className="max-w-xs"

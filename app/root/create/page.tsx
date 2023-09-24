@@ -7,11 +7,27 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { SubmitHandler } from "react-hook-form";
+import { z, ZodError } from "zod";
+
+const FormInputPostSchema = z.object({
+  title: z.string().min(2),
+  content: z.string().min(20),
+  // Outras validações podem ser adicionadas conforme necessário
+});
 
 export default function CreatePage() {
   const router = useRouter();
-  const handleCreatePost: SubmitHandler<FormInputPost> = (data) => {
-    createPost(data);
+  const handleCreatePost: SubmitHandler<FormInputPost> = async (data) => {
+    try {
+      FormInputPostSchema.parse(data);
+      await createPost(data);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.error("Erro de validação:", error.format());
+      } else {
+        console.error("Erro desconhecido:", error);
+      }
+    }
   };
 
   const { mutate: createPost, isLoading: isLoadingSubmit } = useMutation({

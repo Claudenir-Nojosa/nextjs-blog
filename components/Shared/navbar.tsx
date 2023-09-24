@@ -23,8 +23,10 @@ import {
   GithubIcon,
   SearchIcon,
   LinkedinIcon,
+  LogOutIcon,
 } from "@/components/Shared/icons";
 import Image from "next/image";
+import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
 
 export const Navbar = () => {
   const searchInput = (
@@ -101,7 +103,24 @@ export const Navbar = () => {
             <LinkedinIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
+          <SignedIn>
+            <SignOutButton>
+              <div className=" block md:hidden">
+                <LogOutIcon />
+              </div>
+            </SignOutButton>
+          </SignedIn>
         </NavbarItem>
+
+        <div className="hidden md:flex">
+          <OrganizationSwitcher
+            appearance={{
+              elements: {
+                organizationSwitcherTrigger: "py-2 px-4 dark:bg-[#7f7979]",
+              },
+            }}
+          />
+        </div>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
@@ -110,18 +129,28 @@ export const Navbar = () => {
         </Link>
         <ThemeSwitch />
         <NavbarMenuToggle />
+
+        <div className="hidden md:flex">
+          <OrganizationSwitcher
+            appearance={{
+              elements: {
+                organizationSwitcherTrigger: "py-2 px-4 dark:bg-[#7f7979]",
+              },
+            }}
+          />
+        </div>
       </NavbarContent>
 
       <NavbarMenu className="mt-8">
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
+         {/*  {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
                   index === 4
                     ? "danger"
-                    : index === siteConfig.navMenuItems.length - 3
+                    : index === siteConfig.navMenuItems.length - 2
                     ? "primary"
                     : "foreground"
                 }
@@ -131,7 +160,14 @@ export const Navbar = () => {
                 {item.label}
               </Link>
             </NavbarMenuItem>
-          ))}
+          ))} */}
+          <SignedIn>
+            <SignOutButton>
+              <div className="flex cursor-pointer ">
+                <h4 className="text-red-600 h-7">Sair</h4>
+              </div>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </NavbarMenu>
     </NextUINavbar>
