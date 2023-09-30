@@ -25,6 +25,7 @@ import {
   SearchIcon,
   LinkedinIcon,
   LogOutIcon,
+  LoginIcon,
 } from "@/components/Shared/icons";
 import Image from "next/image";
 import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
@@ -106,13 +107,19 @@ export const Navbar = () => {
             <LinkedinIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
-          <SignedIn>
-            <SignOutButton>
-              <div className=" block">
-                <LogOutIcon />
-              </div>
-            </SignOutButton>
-          </SignedIn>
+          {user ? (
+            <SignedIn>
+              <SignOutButton>
+                <div className="flex cursor-pointer">
+                  <LogOutIcon />
+                </div>
+              </SignOutButton>
+            </SignedIn>
+          ) : (
+            <Link className="cursor-pointer" href="/sign-up">
+              <LoginIcon className="text-default-500" />
+            </Link>
+          )}
         </NavbarItem>
 
         <div className="hidden lg:flex">
