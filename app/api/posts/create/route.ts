@@ -9,10 +9,12 @@ export async function POST(req: Request) {
         title: body.title,
         content: body.content,
         tagId: body.tagId,
+        userId: body.userId,
       },
     });
     return NextResponse.json(post, { status: 200 });
   } catch (error) {
+    console.error("Erro ao criar o post:", error);
     return NextResponse.json(
       { message: "Could Not Create Post" },
       { status: 500 }

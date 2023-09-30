@@ -24,6 +24,7 @@ interface FormPostProps {
   isEditing: boolean;
   initialValue?: FormInputPost;
   isLoadingSubmit: boolean;
+  userId: any;
 }
 
 const FormPost: FC<FormPostProps> = ({
@@ -31,6 +32,7 @@ const FormPost: FC<FormPostProps> = ({
   isEditing,
   initialValue,
   isLoadingSubmit,
+  userId,
 }) => {
   const { register, handleSubmit } = useForm<FormInputPost>({
     defaultValues: initialValue,

@@ -10,6 +10,12 @@ datasource db {
   url      = env("MONGODB_URL")
 }
 
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+  posts Post[]
+}
+
 model Tag {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
@@ -23,5 +29,7 @@ model Post {
   createdAt DateTime @default(now())
   updateAte DateTime @updatedAt
   tagId     String   @db.ObjectId
+  userId    String   @db.ObjectId
   Tag       Tag      @relation(fields: [tagId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
 }

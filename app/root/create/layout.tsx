@@ -1,13 +1,16 @@
+import { Toaster } from "@/components/ui/toaster";
+
 export default function AboutLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4">
-			<div className="inline-block max-w-lg text-center justify-center">
-				{children}
-			</div>
-		</section>
-	);
+  return (
+    <section className="flex flex-col items-center justify-center gap-4">
+      <div className="inline-block max-w-lg text-center justify-center">
+        {children}
+        <Toaster />
+      </div>
+    </section>
+  );
 }

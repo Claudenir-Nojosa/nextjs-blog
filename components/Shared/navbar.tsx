@@ -126,7 +126,7 @@ export const Navbar = () => {
           <OrganizationSwitcher
             appearance={{
               elements: {
-                organizationSwitcherTrigger: "py-2 px-4 dark:bg-[#7f7979]",
+                organizationSwitcherTrigger: "py-2 px-4 dark:bg-gradient-to-tl from-[#FF705B] to-[#FFB457] dark:text-white",
               },
             }}
           />

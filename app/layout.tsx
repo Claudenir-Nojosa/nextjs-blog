@@ -44,8 +44,19 @@ export default function RootLayout({
           dividerText: "text-black dark:text-white",
           formFieldLabel: "text-black dark:text-white",
           formFieldRow: "text-black dark:text-white",
-          logoBox: "justify-center align-center text-center flex w-full pl-36 pt-2",
+          logoBox:
+            "justify-center align-center text-center flex w-full pl-36 pt-2",
           footerActionText: "text-black dark:text-white",
+          organizationSwitcherPopoverMain: "text-black dark:text-white",
+          organizationSwitcherPopoverActionButton: "text-black dark:text-white",
+          organizationSwitcherPopoverActionButton__createOrganization:
+            "text-black dark:text-white",
+          organizationSwitcherPopoverActionButtonText:
+            "text-black dark:text-white",
+          organizationSwitcherPopoverActionButtonIcon__createOrganization:
+            "text-black dark:text-white",
+          organizationSwitcherPopoverActions:
+            "dark:border-gray-800",
           formButtonPrimary:
             "bg-gradient-to-tl from-[#FF705B] to-[#FFB457] text-black dark:text-white",
         },
