@@ -13,6 +13,7 @@ import { title } from "../Shared/primitives";
 import { Tag } from "@prisma/client";
 import { FC } from "react";
 import ButtonAction from "../Shared/ButtonAction";
+import { JavascriptIcon, NextjsIcon, PythonIcon } from "../Shared/icons";
 
 interface PostCardProps {
   id: string;
@@ -31,13 +32,9 @@ const PostCard: FC<PostCardProps> = ({ post, isEditing, isReading }) => {
   return (
     <Card>
       <CardHeader className="flex gap-3 min-w-[480px]">
-        <Image
-          alt="clawncoding logo"
-          height={40}
-          radius="sm"
-          src="https://raw.githubusercontent.com/Claudenir-Nojosa/servidor_estaticos/main/logo.png"
-          width={40}
-        />
+        {Tag.name === "Python" ? <PythonIcon /> : ""}
+        {Tag.name === "Javascript" ? <JavascriptIcon /> : ""}
+        {Tag.name === "Nextjs" ? <NextjsIcon className="dark:fill-current"/> : ""}
         <div className="flex flex-col">
           <p className="text-md text-start">{CardTitle}</p>
           <p className="text-small text-default-500 text-start">{Tag.name}</p>
@@ -55,7 +52,7 @@ const PostCard: FC<PostCardProps> = ({ post, isEditing, isReading }) => {
       ) : (
         <CardFooter>
           <Link
-            href={`/blog/${id}`}
+            href={`/root/blog/${id}`}
             className={title({ color: "yellow", size: "sm" })}
           >
             Saiba mais...

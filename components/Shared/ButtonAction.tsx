@@ -28,7 +28,7 @@ const ButtonAction: FC<ButtonActionProps> = ({ id }) => {
 
   return (
     <div className="flex gap-4 items-center">
-      <Link href={`/edit/${id}`}>
+      <Link href={`/root/edit/${id}`}>
         <Button isIconOnly variant="bordered" aria-label="Edit">
           <EditIcon />
         </Button>
